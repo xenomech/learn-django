@@ -53,3 +53,12 @@ django-admin startproject mocha .
 ```
 
 > Note the `.` in the end? If that is missing django will enclose the app in a folder. We dont want that hence the `.` . We want it to scaffold it in the CWD(current working directory)
+
+Now run 
+```
+python manage.py runserver
+```
+
+head to `localhost:8000` you'll be treated with the django starter page.
+
+[next chapter](chapter_3.md)
