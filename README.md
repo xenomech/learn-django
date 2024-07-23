@@ -4,7 +4,7 @@ This is a quick learn repo on creating a todo application with user authenticati
 
 Table of contents:
 
-1. [Prerequisite](_docs/prerequisite.md)
+1. [Prerequisite](_docs/chapter_1.md)
 2. [Project, app, wsgi, asgi, and the files](_docs/chapter_2.md)
 3. apps, models, db
 4. views, templates, actions, forms
