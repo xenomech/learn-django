@@ -85,4 +85,32 @@ mocha/
 - `mocha/wsgi.py` An entry-point for WSGI-compatible web servers to serve your project. WSGI (Web Server Gateway Interface)
 
 
-  [Next chapter](chapter_3.md)
+Now we need to create an app for the todo, this will help modularize the app.
+
+```
+django-admin startapp todo
+```
+
+the todo app would look something like this
+```
+todo/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+```
+
+- `todo/admin.py` used for wiring the app to django admin
+- `todo/apps.py` contains the app config for the app
+- `migrations/` contains all the generated db migrations
+- `todo/models.py` used to configure the db models for the app
+- `todo/tests.py` used to write tests for the app
+- `todo/views.py` used to write the views for the app
+
+
+
+[Next chapter](chapter_3.md)
