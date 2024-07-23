@@ -15,3 +15,6 @@ https://packaging.python.org/en/latest/key_projects/#pip
 
 A Python Virtual Environment is an isolated space where you can work on your Python projects, separately from your system-installed Python. You can set up your own libraries and dependencies without affecting the system Python.
 https://docs.python.org/3/library/venv.html
+
+
+[next chapter](chapter_2.md)
