@@ -111,6 +111,6 @@ todo/
 - `todo/tests.py` used to write tests for the app
 - `todo/views.py` used to write the views for the app
 
-
+see [this pull request](https://github.com/xenomech/learn-django/pull/2)
 
 [Next chapter](chapter_3.md)
