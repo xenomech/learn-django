@@ -6,7 +6,7 @@ Table of contents:
 
 1. [Prerequisite](_docs/chapter_1.md)
 2. [Project, app, wsgi, asgi, and the files](_docs/chapter_2.md)
-3. apps, models, db
+3. [Apps, Models, DB](_docs/chapter_3.md)
 4. views, templates, actions, forms
 5. views, templates, actions, forms (Extended)
 6. Statics, styles, assets
