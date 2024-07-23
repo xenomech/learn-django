@@ -52,13 +52,37 @@ Once django is installed we can start a project.
 django-admin startproject mocha .
 ```
 
-> Note the `.` in the end? If that is missing django will enclose the app in a folder. We dont want that hence the `.` . We want it to scaffold it in the CWD(current working directory)
+> Note the `.` in the end? If that is missing django will enclose the app in a folder. We don't want that hence the `.` . We want it to scaffold it in the CWD(current working directory)
 
-Now run 
+Now run
+
 ```
 python manage.py runserver
 ```
 
 head to `localhost:8000` you'll be treated with the django starter page.
 
-[next chapter](chapter_3.md)
+Now lets talk about the files and the structure
+
+The main Django app structure will look like:
+
+```
+mocha/
+    manage.py
+    mocha/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+```
+
+- `manage.py` is program used to manage the django project.
+- `mocha/__init__.py` is an empty file that tells Python that this directory should be considered a Python package.
+- `mocha/settings.py` is the settings/configuration for this Django project.
+- `mocha/urls.py` is the list of urls declarations for the django project.
+- `mocha/asgi.py` An entry-point for ASGI-compatible web servers to serve your project. ASGI (Asynchronous Server Gateway Interface)
+- `mocha/wsgi.py` An entry-point for WSGI-compatible web servers to serve your project. WSGI (Web Server Gateway Interface)
+
+
+  [Next chapter](chapter_3.md)
