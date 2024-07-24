@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,8 @@ SECRET_KEY = "django-insecure-@ndfmg)dzcoigwi1fo*2^+j8n)x#3_7(p99#sshxnhdmtk+2ku
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'learn-django-mlhp.onrender.com',
+    "localhost",
+    "learn-django-mlhp.onrender.com",
 ]
 
 
@@ -77,10 +80,11 @@ WSGI_APPLICATION = "mocha.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default="postgresql://xenomech@localhost:5432/mocha",
+        conn_max_age=600,
+    )
 }
 
 
@@ -114,14 +118,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-# settings.py
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'auth:login'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "login"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_FILES_DIRS = [
+    os.path.join(BASE_DIR, "todo/static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

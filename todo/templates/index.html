@@ -1,33 +1,129 @@
-{% include "layout/base.html" %} {% block content %}
-<form action="{% url 'auth:logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Logout</button>
-</form>
-<h1>Tasks <a href="{%url 'todo:create_todo'%}">add todo</a> </h1>
-<form action="{% url 'todo:create_todo' %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="title" placeholder="Title" />
-  <input type="text" name="description" placeholder="Description" />
-  <input type="submit" value="Create" />
-</form>
-
-<ul>
-  {% for todo in todos %}
-  <li>
-    <a href="{% url 'todo:edit_todo' todo.id %}"
-      >{{ todo.title }} - {{ todo.description }}</a
+{% extends "layout/base.html" %} {% block title %} Todo List {% endblock %} 
+{% block content %}
+<nav class="p-2">
+  <form
+    class="flex items-center justify-end w-full"
+    action="{% url 'logout' %}"
+    method="post"
+  >
+    {% csrf_token %}
+    <button
+      class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 flex items-center gap-1"
+      type="submit"
     >
-    <form action="{% url 'todo:complete_todo' todo.id %}" method="post">
-      {% csrf_token %} {% if todo.completed %}
-      <button style="color: green" type="submit">(Completed)</button>
-      {% else %}
-      <button type="submit">Mark as Completed</button>
-      {% endif %}
-    </form>
-    <form action="{% url 'todo:delete_todo' todo.id %}" method="post">
-      {% csrf_token %} <button style="color: red" type="submit">Delete</button>
-    </form>
-  </li>
-  {% endfor %}
-</ul>
+      <span>logout</span>
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 15 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 1C2.44771 1 2 1.44772 2 2V13C2 13.5523 2.44772 14 3 14H10.5C10.7761 14 11 13.7761 11 13.5C11 13.2239 10.7761 13 10.5 13H3V2L10.5 2C10.7761 2 11 1.77614 11 1.5C11 1.22386 10.7761 1 10.5 1H3ZM12.6036 4.89645C12.4083 4.70118 12.0917 4.70118 11.8964 4.89645C11.7012 5.09171 11.7012 5.40829 11.8964 5.60355L13.2929 7H6.5C6.22386 7 6 7.22386 6 7.5C6 7.77614 6.22386 8 6.5 8H13.2929L11.8964 9.39645C11.7012 9.59171 11.7012 9.90829 11.8964 10.1036C12.0917 10.2988 12.4083 10.2988 12.6036 10.1036L14.8536 7.85355C15.0488 7.65829 15.0488 7.34171 14.8536 7.14645L12.6036 4.89645Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </button>
+  </form>
+</nav>
+<main class="">
+  <div class="flex items-center gap-4">
+    <h1 class="text-2xl">Tasks</h1>
+    <a
+      class="bg-blue-500 text-white p-4 py-3 leading-none rounded-full"
+      href="{%url 'todo:create_todo'%}"
+      >+</a
+    >
+  </div>
+
+  <ul class="space-y-4 mt-6">
+    {% for todo in todos %}
+    <li
+      class="border border-gray-300 rounded-lg p-2 flex items-center justify-between"
+    >
+      <div class="flex items-center">
+        <form
+          class="flex items-center gap-4"
+          action="{% url 'todo:complete_todo' todo.id %}"
+          method="post"
+        >
+          {% csrf_token %} {% if todo.completed %}
+          <button type="submit">
+            <svg
+              class="w-4 h-4"
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 3H12V12H3L3 3ZM2 3C2 2.44771 2.44772 2 3 2H12C12.5523 2 13 2.44772 13 3V12C13 12.5523 12.5523 13 12 13H3C2.44771 13 2 12.5523 2 12V3ZM10.3498 5.51105C10.506 5.28337 10.4481 4.97212 10.2204 4.81587C9.99275 4.65961 9.6815 4.71751 9.52525 4.94519L6.64048 9.14857L5.19733 7.40889C5.02102 7.19635 4.7058 7.16699 4.49327 7.34329C4.28073 7.5196 4.25137 7.83482 4.42767 8.04735L6.2934 10.2964C6.39348 10.4171 6.54437 10.4838 6.70097 10.4767C6.85757 10.4695 7.00177 10.3894 7.09047 10.2601L10.3498 5.51105Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          {% else %}
+          <button type="submit">
+            <svg
+              class="w-4 h-4"
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1H1.5H13.5H14V1.5V13.5V14H13.5H1.5H1V13.5V1.5V1ZM2 2V13H13V2H2Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          {% endif %}
+          <a class='flex item-start flex-col' href="{% url 'todo:edit_todo' todo.id %}">
+            <span class="{% if todo.completed %} line-through {% endif %} text-2xl font-bold tracking-tight text-gray-900">
+              {{ todo.title }}
+            </span>
+            <span class="font-normal text-gray-700">{{ todo.description }}</span>
+          </a>
+        </form>
+      </div>
+      <form
+        class="flex items-center"
+        action="{% url 'todo:delete_todo' todo.id %}"
+        method="post"
+      >
+        {% csrf_token %}
+        <button
+          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 flex items-center gap-1"
+          type="submit"
+        >
+          <svg
+            class="w-4 h-4"
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.5 1C5.22386 1 5 1.22386 5 1.5C5 1.77614 5.22386 2 5.5 2H9.5C9.77614 2 10 1.77614 10 1.5C10 1.22386 9.77614 1 9.5 1H5.5ZM3 3.5C3 3.22386 3.22386 3 3.5 3H5H10H11.5C11.7761 3 12 3.22386 12 3.5C12 3.77614 11.7761 4 11.5 4H11V12C11 12.5523 10.5523 13 10 13H5C4.44772 13 4 12.5523 4 12V4L3.5 4C3.22386 4 3 3.77614 3 3.5ZM5 4H10V12H5V4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</main>
 {% endblock %}

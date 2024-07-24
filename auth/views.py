@@ -8,11 +8,12 @@ from django.shortcuts import redirect
 
 class RegistrationView(FormView):
     form_class = RegistrationForm
-    success_url = reverse_lazy("todo:list_all_todo")
     template_name = "auth/register.html"
+    success_url = reverse_lazy("todo:list_all_todo")
 
     def form_valid(self, form):
         user = form.save()
+        print(user)
         login(self.request, user)
         return redirect(self.success_url)
 

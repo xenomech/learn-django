@@ -8,7 +8,7 @@ from .models import Todo
 
 # Create
 class CreateTodoView(LoginRequiredMixin, CreateView):
-    login_url = "auth:login"
+    login_url = "login"
     model = Todo
     fields = ["title", "description"]
     template_name = "forms/create_todo_form.html"
@@ -21,7 +21,7 @@ class CreateTodoView(LoginRequiredMixin, CreateView):
 
 # Read
 class TodoListView(LoginRequiredMixin, ListView):
-    login_url = "auth:login"
+    login_url = "login"
     template_name = "index.html"
     context_object_name = "todos"
     model = Todo
@@ -33,7 +33,7 @@ class TodoListView(LoginRequiredMixin, ListView):
 
 # Update
 class EditTodoView(LoginRequiredMixin, UpdateView):
-    login_url = "auth:login"
+    login_url = "login"
     model = Todo
     fields = ["title", "description"]
     template_name = "forms/edit_form.html"
@@ -46,7 +46,7 @@ class EditTodoView(LoginRequiredMixin, UpdateView):
 
 # Delete
 class DeleteTodoView(LoginRequiredMixin, DeleteView):
-    login_url = "auth:login"
+    login_url = "login"
     model = Todo
     success_url = reverse_lazy("todo:list_all_todo")
 

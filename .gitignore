@@ -133,6 +133,13 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.pnpm
+.pnpm-debug.log
+pnpm/
+node_modules/
+__pypackages__/
+__pypackages_backup__/
+
 
 # Spyder project settings
 .spyderproject
