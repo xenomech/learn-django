@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
-    "learn-django-mlhp.onrender.com",
+    "mocha-4a2v.onrender.com",
 ]
 
 
