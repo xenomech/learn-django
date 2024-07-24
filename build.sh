@@ -7,4 +7,4 @@ pip install -r requirements.txt
 # python manage.py collectstatic --no-input
 python manage.py migrate
 
-gunicorn mocha.wsgi:application --bind
+# gunicorn mocha.wsgi:application --bind
