@@ -1,0 +1,53 @@
+{% extends "layout/base.html" %} {% block title %} Login {% endblock %} 
+{% block content %}
+<main class="p-10 mt-10">
+  <h1 class="text-2xl">Sign Up</h1>
+  <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <div class="mt-2">
+      <label
+        for="form.email"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Email</label
+      >
+      {{ form.email }}
+      <label class="mt-2 text-red-400">{{form.errors.email}}</label>
+    </div>
+    <div class="mt-2">
+      <label
+        for="form.username"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Username</label
+      >
+      {{ form.username }}
+      <label class="mt-2 text-red-400">{{form.errors.username}}</label>
+    </div>
+    <div class="mt-2">
+      <label
+        for="form.password1"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Password</label
+      >
+      {{ form.password1 }}
+      <label class="mt-2 text-red-400">{{form.errors.password1}}</label>
+    </div>
+    <div class="mt-2">
+      <label
+        for="form.password2"
+        class="block mb-2 text-sm font-medium text-gray-900"
+        >Confirm Password</label
+      >
+      {{ form.password2 }}
+      <label class="mt-2 text-red-400">{{form.errors.password2}}</label>
+    </div>
+    <div class="mt-2">
+      <button
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </div>
+  </form>
+</main>
+{% endblock %}
