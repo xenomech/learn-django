@@ -1,5 +1,5 @@
 databases:
-  - name: mochadb
+  - name: mocha
     plan: free
     databaseName: mocha
     user: xenomech
@@ -10,4 +10,13 @@ services:
     name: mocha
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn mocha.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mocha
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
