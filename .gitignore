@@ -6,6 +6,8 @@ my-virtual-environment/
 __pycache__/
 *.py[cod]
 *$py.class
+stat
+staticfiles/
 
 # C extensions
 *.so
