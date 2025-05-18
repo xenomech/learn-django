@@ -80,6 +80,7 @@ CSRF_TRUSTED_ORIGINS = ["https://todo.zaped.xyz"]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
