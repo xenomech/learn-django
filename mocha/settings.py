@@ -25,11 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-@ndfmg)dzcoigwi1fo*2^+j8n)x#3_7(p99#sshxnhdmtk+2ku"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
-    "mocha-4a2v.onrender.com",
+    "todo.zaped.xyz",
 ]
 
 
