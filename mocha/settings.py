@@ -83,7 +83,7 @@ WSGI_APPLICATION = "mocha.wsgi.application"
 DATABASES = {
     "default": dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default="postgresql://xenomech@localhost:5432/mocha",
+        default="postgresql://xenomech:xenomech@db:5432/mocha",
         conn_max_age=600,
     )
 }
