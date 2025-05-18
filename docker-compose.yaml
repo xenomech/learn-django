@@ -12,16 +12,30 @@ services:
     networks:
       - mocha-network
 
-  web:
+  django:
     build: .
     command:
       - ./build.sh
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     volumes:
       - .:/app
     depends_on:
       - db
+    networks:
+      - mocha-network
+
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - django
     networks:
       - mocha-network
 
@@ -31,4 +45,8 @@ networks:
 
 volumes:
   postgres_data:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
     driver: local
